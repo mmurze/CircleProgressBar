@@ -1,0 +1,127 @@
+:root {
+  --width-switch: 50px;
+  --height-switch: 24px;
+  --padding-switch: 3px;
+  --radius-switch: calc(var(--height-switch) - 2 * var(--padding-switch));
+
+  --translate-x-switch: 26px;
+
+  --main-color: #005bff;
+}
+
+.container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: minmax(120px, 1fr) 1fr;
+  gap: 20px;
+
+  @media screen and (min-width: 440px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  @media screen and (min-width: 440px) {
+    align-items: flex-start;
+  }
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.input-value {
+  height: var(--height-switch);
+  border-radius: 40px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--width-switch);
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 170px;
+  width: 100%;
+  height: var(--height-switch);
+}
+
+.input-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 170px;
+  width: 100%;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: var(--height-switch);
+
+  width: 100%;
+  max-width: var(--width-switch);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: var(--radius-switch);
+  width: var(--radius-switch);
+  left: var(--padding-switch);
+  bottom: var(--padding-switch);
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.checkbox:checked + .slider {
+  background-color: var(--main-color);
+}
+
+.checkbox:focus + .slider {
+  box-shadow: 0 0 1px var(--main-color);
+}
+
+.checkbox:checked + .slider:before {
+  -webkit-transform: translateX(var(--translate-x-switch));
+  -ms-transform: translateX(var(--translate-x-switch));
+  transform: translateX(var(--translate-x-switch));
+}
+
+.label {
+  position: relative;
+  left: 60px;
+}

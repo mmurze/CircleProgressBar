@@ -1,0 +1,26 @@
+.circle-progress-bar {
+  overflow: visible;
+}
+
+circle {
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.animated {
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(-90deg);
+  }
+  to {
+    transform: rotate(270deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
